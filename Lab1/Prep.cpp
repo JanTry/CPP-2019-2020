@@ -9,10 +9,10 @@ class MyClass {       // Klasa
     int myNum;        // Atrybuty
     string myString;
     int bonus;
-    static int counter;  
+    static int counter;
     const int myConst=11;
     static const int myStaticConst=12;
-    static constexpr int myStaticConstexpr=10; 
+    static constexpr int myStaticConstexpr=10;
   public: //Wszystkie metody i konstruktory publiczne
     MyClass(){}
     MyClass(int myNum, string myString="Nothing here", int bonus=0) : myNum{myNum}, myString{myString}, bonus{bonus} {}
@@ -25,15 +25,16 @@ class MyClass {       // Klasa
     void setMyString(string newString){myString=newString;}
     void setBonus(int newBonus){bonus=newBonus;}
     static void setCounter () { counter = 0; }
-	static void printCounter() { cout << "Counter = " << counter << endl; }
+	  static void printCounter() { cout << "Counter = " << counter << endl; }
     void printConsts(){cout<<myConst<<" "<<myStaticConst<<" "<<myStaticConstexpr<<endl;}
     int getConst(){return myConst;}
     int getStaticConst(){return myStaticConst;}
     int getStaticConstexpr(){return myStaticConstexpr;}
+    void setValues(istream& is){is >> myNum >> myString >> bonus;}
+    void getValues(ostream& os) {os << myNum << myString <<bonus;}
 };
 // MyClass::MyClass(){  //Konstruktor bez parametrów
 // }
-
 
 int main(){
     auto p=MyClass{2,"sd",23};
@@ -48,4 +49,7 @@ int main(){
     cout<<p.getConst()<<endl;
     cout<<p.getStaticConst()<<endl;
     cout<<p.getStaticConstexpr()<<endl;
+    p.setValues(cin);
+    p.getValues(cout);
+    p.print();
 }
